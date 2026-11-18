@@ -1,8 +1,15 @@
 ﻿const tachesEnregistrees = localStorage.getItem("taches");
-const taches = tachesEnregistrees ? JSON.parse(tachesEnregistrees) : [];
+const anciennesTaches = tachesEnregistrees ? JSON.parse(tachesEnregistrees) : [];
+const taches = anciennesTaches.map((tache, index) => ({
+  id: tache.id ?? Date.now() + index,
+  titre: tache.titre ?? tache.texte ?? "",
+  contenu: tache.contenu ?? "",
+  terminee: Boolean(tache.terminee),
+}));
 
 const formulaire = document.querySelector("form");
-const champTache = document.getElementById("champ-tache");
+const champTitre = document.getElementById("champ-titre");
+const champContenu = document.getElementById("champ-contenu");
 const listeTaches = document.getElementById("liste-taches");
 
 function sauvegarderTaches() {
@@ -14,33 +21,28 @@ function afficherTaches() {
 
   taches.forEach((tache, index) => {
     const element = document.createElement("li");
-    const caseACocher = document.createElement("input");
-    caseACocher.type = "checkbox";
-    caseACocher.checked = tache.terminee;
-    caseACocher.addEventListener("change", () => {
-      tache.terminee = caseACocher.checked;
-      sauvegarderTaches();
-      afficherTaches();
-    });
-
-    const texte = document.createElement("span");
-    texte.textContent = tache.texte;
-
     if (tache.terminee) {
       element.classList.add("terminee");
     }
 
+    const titre = document.createElement("h3");
+    titre.textContent = tache.titre;
+
+    const contenu = document.createElement("p");
+    contenu.textContent = tache.contenu;
+
     const boutonSupprimer = document.createElement("button");
     boutonSupprimer.type = "button";
-    boutonSupprimer.textContent = "Supprimer";
+    boutonSupprimer.textContent = "✕";
     boutonSupprimer.classList.add("bouton-supprimer");
+    boutonSupprimer.setAttribute("aria-label", `Supprimer le post-it : ${tache.titre}`);
     boutonSupprimer.addEventListener("click", () => {
       taches.splice(index, 1);
       sauvegarderTaches();
       afficherTaches();
     });
 
-    element.append(caseACocher, texte, boutonSupprimer);
+    element.append(titre, contenu, boutonSupprimer);
     listeTaches.appendChild(element);
   });
 }
@@ -48,12 +50,19 @@ function afficherTaches() {
 formulaire.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const tache = champTache.value.trim();
-  if (tache === "") return;
+  const titre = champTitre.value.trim();
+  const contenu = champContenu.value.trim();
+  if (titre === "" || contenu === "") return;
 
-  taches.push({ texte: tache, terminee: false });
+  taches.push({
+    id: Date.now(),
+    titre,
+    contenu,
+    terminee: false,
+  });
   sauvegarderTaches();
-  champTache.value = "";
+  champTitre.value = "";
+  champContenu.value = "";
   afficherTaches();
 });
 
