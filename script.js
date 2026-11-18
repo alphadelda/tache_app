@@ -9,7 +9,22 @@ function afficherTaches() {
 
   taches.forEach((tache) => {
     const element = document.createElement("li");
-    element.textContent = tache;
+    const caseACocher = document.createElement("input");
+    caseACocher.type = "checkbox";
+    caseACocher.checked = tache.terminee;
+    caseACocher.addEventListener("change", () => {
+      tache.terminee = caseACocher.checked;
+      afficherTaches();
+    });
+
+    const texte = document.createElement("span");
+    texte.textContent = tache.texte;
+
+    if (tache.terminee) {
+      element.classList.add("terminee");
+    }
+
+    element.append(caseACocher, texte);
     listeTaches.appendChild(element);
   });
 }
@@ -20,7 +35,7 @@ formulaire.addEventListener("submit", (event) => {
   const tache = champTache.value.trim();
   if (tache === "") return;
 
-  taches.push(tache);
+  taches.push({ texte: tache, terminee: false });
   champTache.value = "";
   afficherTaches();
 });

@@ -23,3 +23,7 @@ button {
 #liste-taches {
   margin-top: 0;
 }
+
+.terminee {
+  text-decoration: line-through;
+}
