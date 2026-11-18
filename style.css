@@ -1,0 +1,25 @@
+﻿body {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family: system-ui, sans-serif;
+}
+
+form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+#champ-tache {
+  flex: 1;
+  padding: 8px;
+}
+
+button {
+  padding: 8px 14px;
+}
+
+#liste-taches {
+  margin-top: 0;
+}
