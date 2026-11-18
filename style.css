@@ -1,23 +1,78 @@
 ﻿body {
   max-width: 600px;
+  min-height: 100vh;
   margin: 0 auto;
-  padding: 24px;
+  padding: 32px 24px;
   font-family: system-ui, sans-serif;
+  background-color: #f5f6f8;
+  color: #202633;
+  box-sizing: border-box;
+}
+
+.entete {
+  margin-bottom: 48px;
+}
+
+.logo {
+  font-family: Arial, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 750;
+  letter-spacing: -0.04em;
 }
 
 form {
   display: flex;
-  gap: 8px;
-  margin-bottom: 24px;
-}
-
-#champ-tache {
-  flex: 1;
+  max-width: 520px;
+  gap: 12px;
+  margin: 0 auto 24px;
   padding: 8px;
+  background-color: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgb(25 35 50 / 8%);
 }
 
-button {
-  padding: 8px 14px;
+form input[type="text"] {
+  min-width: 0;
+  flex: 1;
+  padding: 12px 14px;
+  font: inherit;
+  background-color: #fff;
+  border: 1px solid #e0e4ea;
+  border-radius: 9px;
+  box-shadow: 0 2px 8px rgb(25 35 50 / 5%);
+  outline: none;
+}
+
+form input[type="text"]:focus {
+  border-color: #64748b;
+  box-shadow: 0 0 0 3px rgb(100 116 139 / 16%);
+}
+
+form button[type="submit"] {
+  padding: 12px 18px;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  background-color: #263449;
+  border: 0;
+  border-radius: 9px;
+  box-shadow: 0 3px 8px rgb(25 35 50 / 16%);
+  cursor: pointer;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+form button[type="submit"]:hover {
+  background-color: #172438;
+  transform: translateY(-1px);
+}
+
+form button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+form button[type="submit"]:focus-visible {
+  outline: 3px solid rgb(100 116 139 / 35%);
+  outline-offset: 2px;
 }
 
 .bouton-supprimer {
