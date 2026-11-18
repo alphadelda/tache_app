@@ -153,17 +153,24 @@ form button[type="submit"]:focus-visible {
   overflow-wrap: anywhere;
 }
 
+.actions-postit {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: auto;
+}
+
 #liste-taches > li > input[type="checkbox"] {
   display: none;
 }
 
-#liste-taches > li > .bouton-supprimer {
-  align-self: flex-end;
+.actions-postit > .bouton-supprimer {
   display: grid;
   place-items: center;
   width: 30px;
   height: 30px;
-  margin: auto 0 0;
+  margin: 0;
   padding: 0;
   overflow: hidden;
   color: #fff;
@@ -176,12 +183,30 @@ form button[type="submit"]:focus-visible {
   cursor: pointer;
 }
 
-#liste-taches > li > .bouton-supprimer::after {
+.actions-postit > .bouton-supprimer::after {
   content: none;
 }
 
-#liste-taches > li > .bouton-supprimer:hover {
+.actions-postit > .bouton-supprimer:hover {
   background-color: #1565c0;
+}
+
+.bouton-modifier {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  color: #4b5563;
+  background: transparent;
+  border: 0;
+  border-radius: 2px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.bouton-modifier:hover {
+  background-color: rgb(38 52 73 / 10%);
 }
 
 .terminee {

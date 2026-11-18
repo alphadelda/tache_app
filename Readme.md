@@ -1,13 +1,14 @@
-﻿# Liste de tâches
+﻿# Tache_app - Tableau de Post-its
 
-Une petite application web pour gérer une liste de tâches directement dans le navigateur.
+Une application web interactive de type "tableau de liège" permettant de gérer des post-its (tâches) directement dans le navigateur, avec un design moderne et une persistance des données.
 
 ## Fonctionnalités
 
-- Ajouter une tâche.
-- Cocher ou décocher une tâche comme terminée.
-- Supprimer une tâche.
-- Conserver les tâches et leur état dans le navigateur avec `localStorage`.
+- Ajouter un post-it avec un titre et un contenu.
+- Modifier un post-it existant (le formulaire se pré-remplit).
+- Supprimer un post-it.
+- Design visuel "Masonry" avec des post-its colorés (jaune, orange, rose) et un fond quadrillé.
+- Conserver les post-its et leurs modifications dans le navigateur avec `localStorage`.
 
 ## Stack
 
@@ -15,22 +16,21 @@ HTML, CSS et JavaScript vanilla, avec `localStorage` pour la persistance.
 
 ## Lancer le projet
 
-Ouvrez le fichier `index.html` dans un navigateur.
+Ouvrez simplement le fichier `index.html` dans un navigateur web.
 
-## Collaboration avec l’IA
+## Démarche et Collaboration avec l'IA
 
-Étapes réalisées avec l’aide de Codex :
+Le projet a été développé pas à pas avec l'agent IA **Codex** (intégré à VS Code), en gardant un contrôle total sur le code généré. Chaque étape a été testée dans le navigateur et validée manuellement avant de passer à la suivante.
 
-- Création du formulaire et de la liste de tâches dans `index.html`.
-- Ajout d’une feuille de style simple.
-- Ajout du code pour ajouter et afficher les tâches.
-- Ajout des cases à cocher et du style barré pour les tâches terminées.
-- Ajout de la suppression des tâches.
-- Ajout du chargement et de la sauvegarde des tâches avec `localStorage`.
+**Étapes réalisées avec l'aide de l'IA :**
+- Création du squelette HTML de base (sans CSS ni JS au départ).
+- Refonte complète du design pour correspondre à une maquette visuelle précise (fond quadrillé, post-its colorés avec ombres, effet Masonry).
+- Ajout de la logique JavaScript pour gérer deux champs distincts (Titre et Contenu).
+- Remplacement du bouton de suppression classique par un bouton carré avec une croix.
+- Ajout de la fonctionnalité de modification d'un post-it via le formulaire principal.
+- Mise en place de la sauvegarde et du chargement avec `localStorage`.
 
-Précisions apportées par l’utilisateur au fil du travail :
-
-- La première étape devait contenir uniquement le HTML, sans CSS ni JavaScript.
-- Les étapes suivantes ont demandé séparément le style, l’ajout, l’affichage, le cochage, la suppression et enfin la persistance.
-- La structure du tableau a été explicitée : chaque tâche est un objet avec son texte et son état `terminee`.
-- Le README devait être le seul fichier modifié pour cette étape.
+**Précisions et corrections apportées par l'utilisateur :**
+- L'utilisateur a exigé de découper le travail en petites tâches (un prompt = une action) pour éviter que l'IA ne génère tout d'un coup.
+- L'utilisateur a guidé l'IA avec des instructions CSS très précises pour corriger la mise en page (pleine largeur, retrait d'éléments inutiles).
+- L'utilisateur a demandé une revue de code critique à l'IA pour vérifier la robustesse du système.
