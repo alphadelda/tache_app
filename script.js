@@ -7,7 +7,7 @@ const listeTaches = document.getElementById("liste-taches");
 function afficherTaches() {
   listeTaches.innerHTML = "";
 
-  taches.forEach((tache) => {
+  taches.forEach((tache, index) => {
     const element = document.createElement("li");
     const caseACocher = document.createElement("input");
     caseACocher.type = "checkbox";
@@ -24,7 +24,16 @@ function afficherTaches() {
       element.classList.add("terminee");
     }
 
-    element.append(caseACocher, texte);
+    const boutonSupprimer = document.createElement("button");
+    boutonSupprimer.type = "button";
+    boutonSupprimer.textContent = "Supprimer";
+    boutonSupprimer.classList.add("bouton-supprimer");
+    boutonSupprimer.addEventListener("click", () => {
+      taches.splice(index, 1);
+      afficherTaches();
+    });
+
+    element.append(caseACocher, texte, boutonSupprimer);
     listeTaches.appendChild(element);
   });
 }

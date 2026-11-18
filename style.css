@@ -20,6 +20,16 @@ button {
   padding: 8px 14px;
 }
 
+.bouton-supprimer {
+  margin-left: 8px;
+  padding: 4px 8px;
+  color: #a33;
+  background-color: #fff5f5;
+  border: 1px solid #e5bcbc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 #liste-taches {
   margin-top: 0;
 }
