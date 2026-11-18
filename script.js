@@ -1,8 +1,13 @@
-﻿const taches = [];
+﻿const tachesEnregistrees = localStorage.getItem("taches");
+const taches = tachesEnregistrees ? JSON.parse(tachesEnregistrees) : [];
 
 const formulaire = document.querySelector("form");
 const champTache = document.getElementById("champ-tache");
 const listeTaches = document.getElementById("liste-taches");
+
+function sauvegarderTaches() {
+  localStorage.setItem("taches", JSON.stringify(taches));
+}
 
 function afficherTaches() {
   listeTaches.innerHTML = "";
@@ -14,6 +19,7 @@ function afficherTaches() {
     caseACocher.checked = tache.terminee;
     caseACocher.addEventListener("change", () => {
       tache.terminee = caseACocher.checked;
+      sauvegarderTaches();
       afficherTaches();
     });
 
@@ -30,6 +36,7 @@ function afficherTaches() {
     boutonSupprimer.classList.add("bouton-supprimer");
     boutonSupprimer.addEventListener("click", () => {
       taches.splice(index, 1);
+      sauvegarderTaches();
       afficherTaches();
     });
 
@@ -45,6 +52,9 @@ formulaire.addEventListener("submit", (event) => {
   if (tache === "") return;
 
   taches.push({ texte: tache, terminee: false });
+  sauvegarderTaches();
   champTache.value = "";
   afficherTaches();
 });
+
+afficherTaches();
